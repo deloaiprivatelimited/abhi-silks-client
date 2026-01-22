@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 
 import Catalog from "./pages/Catalog";
-import SareeView from "./pages/SareeView";
 import Blocked from "./pages/Blocked";
 
 import { verifyInviteToken } from "./api/token";
