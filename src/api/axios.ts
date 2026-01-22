@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:5000/api", // change when deployed
+  baseURL: "https://api.abhi.deloai.com/api", // change when deployed
 });
 
 export default api;
