@@ -16,7 +16,7 @@ type Variety = {
   name: string;
 };
 
-const API_BASE = "http://127.0.0.1:5000";
+const API_BASE = "https://api.abhi.deloai.com";
 const PER_PAGE = 12;
 
 export default function Catalog() {
