@@ -24,7 +24,7 @@ export const verifyInviteToken = async () => {
   }
 
   try {
-    const res = await api.post("/invite/verify", { token, device_id });
+    const res = await api.post("/api/invite/verify", { token, device_id });
     return { allowed: true, msg: res.data?.msg || "Allowed" };
   } catch (err: any) {
     return {
