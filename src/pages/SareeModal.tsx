@@ -156,7 +156,7 @@ export default function SareeModal({ sareeId, onClose }: Props) {
                         <img
                           src={url}
                           alt={`${saree.name} ${idx + 1}`}
-                          className="h-[320px] w-full rounded-xl object-cover sm:h-[420px]"
+                          className="h-[320px] w-full rounded-xl object-fill sm:h-[420px]"
                           loading="lazy"
                         />
                       </div>
