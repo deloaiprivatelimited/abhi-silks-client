@@ -73,6 +73,26 @@ export default function SareeModal({ sareeId, onClose }: Props) {
       .catch((e) => setError(e.message))
       .finally(() => setLoading(false));
   }, [sareeId]);
+const openWhatsApp = () => {
+  if (!saree) return;
+
+  const message = `
+Hello 👋
+I'm interested in this saree:
+
+🧵 Name: ${saree.name}
+✨ Variety: ${saree.variety}
+💰 Price: ₹${saree.max_price}
+
+Please share more details.
+`.trim();
+
+  const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+    message
+  )}`;
+
+  window.open(url, "_blank");
+};
 
   const images = saree?.image_urls?.length
     ? saree.image_urls
@@ -245,9 +265,13 @@ export default function SareeModal({ sareeId, onClose }: Props) {
 
                 {/* Optional footer actions (UX Pilot style buttons) */}
                 <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  <button className="w-full bg-[var(--primary)] text-[var(--primary-foreground)] py-3 rounded-lg font-medium hover:opacity-90 transition">
-                    Enquire Now
-                  </button>
+                 <button
+  onClick={openWhatsApp}
+  className="w-full bg-[var(--primary)] text-[var(--primary-foreground)] py-3 rounded-lg font-medium hover:opacity-90 transition"
+>
+  Order Now
+</button>
+
 
                   <button className="w-full bg-[var(--card)] border border-[var(--border)] text-[var(--foreground)] py-3 rounded-lg font-medium hover:bg-[var(--muted)] transition">
                     Close
