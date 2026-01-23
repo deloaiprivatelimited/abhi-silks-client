@@ -298,7 +298,7 @@ export default function Catalog() {
                     >
                       <div className="h-48 overflow-hidden">
                         <img
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                          className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
                           src={
                             s.image_urls?.[0] ||
                             "https://via.placeholder.com/400x520"
@@ -324,7 +324,7 @@ export default function Catalog() {
                         </h3>
 
                         <p className="text-[var(--primary)] font-bold">
-                          ₹{s.min_price} - ₹{s.max_price}
+                      ₹{s.max_price}
                         </p>
                       </div>
                     </button>
