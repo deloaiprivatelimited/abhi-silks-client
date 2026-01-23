@@ -156,7 +156,7 @@ export default function SareeModal({ sareeId, onClose }: Props) {
                         <img
                           src={url}
                           alt={`${saree.name} ${idx + 1}`}
-                          className="h-[320px] w-full rounded-xl object-fill sm:h-[420px]"
+                          className="h-[320px] w-full rounded-xl object-contain sm:h-[420px]"
                           loading="lazy"
                         />
                       </div>
@@ -234,10 +234,10 @@ export default function SareeModal({ sareeId, onClose }: Props) {
 
                     <div className="mt-2 sm:mt-0">
                       <p className="text-lg font-bold text-[var(--primary)]">
-                        ₹{saree.min_price} – ₹{saree.max_price}
+                        ₹{saree.max_price}
                       </p>
                       <p className="text-xs text-[var(--muted-foreground)]">
-                        Price range
+                        Price 
                       </p>
                     </div>
                   </div>
