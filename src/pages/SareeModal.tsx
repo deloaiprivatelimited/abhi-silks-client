@@ -14,6 +14,7 @@ type Props = {
   sareeId: string;
   onClose: () => void;
 };
+const WHATSAPP_NUMBER = "918123414850"; // example: 91 + mobile number
 
 const API_BASE = "https://api.abhi.deloai.com";
 
