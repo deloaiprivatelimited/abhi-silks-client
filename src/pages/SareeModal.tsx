@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import SareeOrderModal from "./SareeOrderModal";
 
 type Saree = {
   id: string;
@@ -19,6 +20,8 @@ const WHATSAPP_NUMBER = "918123414850"; // example: 91 + mobile number
 const API_BASE = "https://api.abhi.deloai.com";
 
 export default function SareeModal({ sareeId, onClose }: Props) {
+  const [showOrderModal, setShowOrderModal] = useState(false);
+
   const [saree, setSaree] = useState<Saree | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -266,17 +269,28 @@ Please share more details.
 
                 {/* Optional footer actions (UX Pilot style buttons) */}
                 <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-3">
-                 <button
-  onClick={openWhatsApp}
+              <button
+  onClick={() => setShowOrderModal(true)}
   className="w-full bg-[var(--primary)] text-[var(--primary-foreground)] py-3 rounded-lg font-medium hover:opacity-90 transition"
 >
   Order Now
 </button>
 
 
+
                   <button className="w-full bg-[var(--card)] border border-[var(--border)] text-[var(--foreground)] py-3 rounded-lg font-medium hover:bg-[var(--muted)] transition">
                     Close
                   </button>
+                  {showOrderModal && saree && (
+  <SareeOrderModal
+    sareeName={saree.name}
+    variety={saree.variety}
+    price={saree.max_price}
+    images={images}
+    onClose={() => setShowOrderModal(false)}
+  />
+)}
+
                 </div>
               </>
             ) : null}
