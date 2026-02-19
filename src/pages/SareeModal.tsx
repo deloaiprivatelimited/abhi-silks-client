@@ -15,7 +15,6 @@ type Props = {
   sareeId: string;
   onClose: () => void;
 };
-const WHATSAPP_NUMBER = "918123414850"; // example: 91 + mobile number
 
 const API_BASE = "https://api.abhi.deloai.com";
 
@@ -77,26 +76,7 @@ export default function SareeModal({ sareeId, onClose }: Props) {
       .catch((e) => setError(e.message))
       .finally(() => setLoading(false));
   }, [sareeId]);
-const openWhatsApp = () => {
-  if (!saree) return;
 
-  const message = `
-Hello 👋
-I'm interested in this saree:
-
-🧵 Name: ${saree.name}
-✨ Variety: ${saree.variety}
-💰 Price: ₹${saree.max_price}
-
-Please share more details.
-`.trim();
-
-  const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-    message
-  )}`;
-
-  window.open(url, "_blank");
-};
 
   const images = saree?.image_urls?.length
     ? saree.image_urls
