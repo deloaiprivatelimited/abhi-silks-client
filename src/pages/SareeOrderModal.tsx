@@ -49,11 +49,13 @@ export default function SareeOrderModal({
     }
 
     let colorDetails = selectedEntries
-      .map(
-        ([index, qty], i) =>
-          `${i + 1}. Color ${Number(index) + 1} - Qty: ${qty}`
-      )
-      .join("\n");
+    .map(([index, qty], i) => {
+      const imageUrl = images[Number(index)];
+      return `${i + 1}. 
+Color Image: ${imageUrl}
+Qty: ${qty}`;
+    })
+    .join("\n\n");
 
     const message = `
 Hello 👋
