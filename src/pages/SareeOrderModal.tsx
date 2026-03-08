@@ -18,44 +18,51 @@ export default function SareeOrderModal({
   onClose,
 }: Props) {
   const [selected, setSelected] = useState<{
-    [key: number]: number; // index -> quantity
+    [key: number]: string;
   }>({});
 
   const toggleSelection = (index: number) => {
     setSelected((prev) => {
-      if (prev[index]) {
-        const copy = { ...prev };
+      const copy = { ...prev };
+
+      if (copy[index] !== undefined) {
         delete copy[index];
-        return copy;
       } else {
-        return { ...prev, [index]: 1 };
+        copy[index] = "1";
       }
+
+      return copy;
     });
   };
 
-  const updateQuantity = (index: number, qty: number) => {
+  const updateQuantity = (index: number, qty: string) => {
+    const cleaned = qty.replace(/[^0-9]/g, "");
+
     setSelected((prev) => ({
       ...prev,
-      [index]: qty,
+      [index]: cleaned,
     }));
   };
 
   const sendToWhatsApp = () => {
-    const selectedEntries = Object.entries(selected);
+    const selectedEntries = Object.entries(selected).filter(
+      ([, qty]) => qty && Number(qty) > 0
+    );
 
     if (selectedEntries.length === 0) {
-      alert("Please select at least one color");
+      alert("Please select at least one color and quantity");
       return;
     }
 
-    let colorDetails = selectedEntries
-    .map(([index, qty], i) => {
-      const imageUrl = images[Number(index)];
-      return `${i + 1}. 
+    const colorDetails = selectedEntries
+      .map(([index, qty], i) => {
+        const imageUrl = images[Number(index)];
+
+        return `${i + 1}.
 Color Image: ${imageUrl}
 Qty: ${qty}`;
-    })
-    .join("\n\n");
+      })
+      .join("\n\n");
 
     const message = `
 Hello 👋
@@ -88,7 +95,7 @@ Please confirm availability.
 
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
           {images.map((img, idx) => {
-            const isSelected = selected[idx];
+            const isSelected = selected[idx] !== undefined;
 
             return (
               <div key={idx} className="border rounded-lg p-3">
@@ -101,7 +108,7 @@ Please confirm availability.
                 <label className="flex items-center gap-2 mb-2">
                   <input
                     type="checkbox"
-                    checked={!!isSelected}
+                    checked={isSelected}
                     onChange={() => toggleSelection(idx)}
                   />
                   Select
@@ -109,11 +116,11 @@ Please confirm availability.
 
                 {isSelected && (
                   <input
-                    type="number"
-                    min={1}
-                    value={isSelected}
+                    type="text"
+                    inputMode="numeric"
+                    value={selected[idx] ?? ""}
                     onChange={(e) =>
-                      updateQuantity(idx, Number(e.target.value))
+                      updateQuantity(idx, e.target.value)
                     }
                     className="w-full border rounded px-2 py-1"
                     placeholder="Quantity"
