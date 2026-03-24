@@ -142,9 +142,36 @@ export default function Catalog() {
     setPage(1);
     setHasMore(true);
   };
-
-  return (
-    <div style={themeVars}>
+return (
+  <div style={themeVars}>
+    
+    {/* ✅ WATERMARK */}
+    <div
+      style={{
+        position: "fixed",
+        inset: 0,
+        pointerEvents: "none",
+        opacity: 0.08,
+        zIndex: 9999,
+        display: "flex",
+        flexWrap: "wrap",
+      }}
+    >
+      {Array.from({ length: 80 }).map((_, i) => (
+        <div
+          key={i}
+          style={{
+            width: "200px",
+            transform: "rotate(-30deg)",
+            fontSize: "14px",
+            fontWeight: "bold",
+            color: "#000",
+          }}
+        >
+          Venkateshwara Silks
+        </div>
+      ))}
+    </div>
       {/* Header */}
       <header className="sticky top-0 z-50 bg-white border-b border-[var(--border)]">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center space-x-3">

@@ -99,12 +99,25 @@ Please confirm availability.
 
             return (
               <div key={idx} className="border rounded-lg p-3">
-                <img
+                {/* <img
                   src={img}
                   className="h-40 w-full object-contain mb-2 rounded"
                   alt={`Color ${idx + 1}`}
-                />
+                /> */}
+<div className="relative">
+  <img
+    src={img}
+    alt={` ${idx + 1}`}
+    className="h-40 w-full object-contain mb-2 rounded"
+  />
 
+  {/* WATERMARK */}
+  <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+    <span className="text-white/30 text-2xl font-bold rotate-[-30deg] select-none">
+      Venkateshwara silks
+    </span>
+  </div>
+</div>
                 <label className="flex items-center gap-2 mb-2">
                   <input
                     type="checkbox"

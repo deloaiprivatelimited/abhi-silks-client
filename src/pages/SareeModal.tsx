@@ -157,12 +157,26 @@ export default function SareeModal({ sareeId, onClose }: Props) {
                   >
                     {images.map((url, idx) => (
                       <div key={idx} className="w-full flex-shrink-0 snap-center">
-                        <img
+                        {/* <img
                           src={url}
                           alt={`${saree.name} ${idx + 1}`}
                           className="h-[320px] w-full rounded-xl object-contain sm:h-[420px]"
                           loading="lazy"
-                        />
+                        /> */}
+                       <div className="relative">
+  <img
+    src={url}
+    alt={`${saree.name} ${idx + 1}`}
+    className="h-[320px] w-full rounded-xl object-contain sm:h-[420px]"
+  />
+
+  {/* WATERMARK */}
+  <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+    <span className="text-white/30 text-2xl font-bold rotate-[-30deg] select-none">
+      Venkateshwara Silks
+    </span>
+  </div>
+</div>
                       </div>
                     ))}
                   </div>
