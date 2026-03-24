@@ -12,6 +12,23 @@ const App: React.FC = () => {
   );
   const [msg, setMsg] = useState("");
 
+  // 👇 ADD THIS HERE
+  useEffect(() => {
+    const handleVisibility = () => {
+      if (document.hidden) {
+        document.body.style.filter = "blur(10px)";
+      } else {
+        document.body.style.filter = "none";
+      }
+    };
+
+    document.addEventListener("visibilitychange", handleVisibility);
+
+    return () => {
+      document.removeEventListener("visibilitychange", handleVisibility);
+    };
+  }, []);
+
   useEffect(() => {
     async function init() {
       const res = await verifyInviteToken();
