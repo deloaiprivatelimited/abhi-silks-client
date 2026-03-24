@@ -16,7 +16,7 @@ type Variety = {
   name: string;
 };
 
-const API_BASE = "https://api.abhi.deloai.com";
+const API_BASE = "https://web-production-2d63b.up.railway.app";
 const PER_PAGE = 12;
 
 export default function Catalog() {

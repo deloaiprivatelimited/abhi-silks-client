@@ -16,7 +16,7 @@ type Props = {
   onClose: () => void;
 };
 
-const API_BASE = "https://api.abhi.deloai.com";
+const API_BASE = "https://web-production-2d63b.up.railway.app";
 
 export default function SareeModal({ sareeId, onClose }: Props) {
   const [showOrderModal, setShowOrderModal] = useState(false);
