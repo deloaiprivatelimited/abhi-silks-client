@@ -171,11 +171,11 @@ export default function SareeModal({ sareeId, onClose }: Props) {
   />
 
   {/* WATERMARK */}
-  <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+  {/* <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
     <span className="text-white/30 text-2xl font-bold rotate-[-30deg] select-none">
       Venkateshwara Silks
     </span>
-  </div>
+  </div> */}
 </div>
                       </div>
                     ))}

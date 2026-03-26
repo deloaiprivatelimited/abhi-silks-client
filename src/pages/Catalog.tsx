@@ -146,7 +146,7 @@ return (
   <div style={themeVars}>
     
     {/* ✅ WATERMARK */}
-    <div
+    {/* <div
       style={{
         position: "fixed",
         inset: 0,
@@ -171,7 +171,7 @@ return (
           Venkateshwara Silks
         </div>
       ))}
-    </div>
+    </div> */}
       {/* Header */}
       <header className="sticky top-0 z-50 bg-white border-b border-[var(--border)]">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center space-x-3">

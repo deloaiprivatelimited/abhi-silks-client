@@ -8,7 +8,7 @@ type Props = {
   onClose: () => void;
 };
 
-const WHATSAPP_NUMBER = "918123414850";
+const WHATSAPP_NUMBER = "917204719020";
 
 export default function SareeOrderModal({
   sareeName,
@@ -111,12 +111,6 @@ Please confirm availability.
     className="h-40 w-full object-contain mb-2 rounded"
   />
 
-  {/* WATERMARK */}
-  <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-    <span className="text-white/30 text-2xl font-bold rotate-[-30deg] select-none">
-      Venkateshwara silks
-    </span>
-  </div>
 </div>
                 <label className="flex items-center gap-2 mb-2">
                   <input
